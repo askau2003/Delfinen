@@ -14,14 +14,14 @@ public class RegistrerMedlemPersistens {
             String adresse = m.getAdresse();
             String by = m.getBy();
             String aktivitetsForm = m.getAktivitetsForm();
-            String svømmerStatus = m.getSvømmerStatus();
+            String svoemmerStatus = m.getSvoemmerStatus();
 
             writer.append(navn+",");
             writer.append(alder+",");
             writer.append(adresse+",");
-            writer.append(by+",")
-            writer.append(aktivitetsForm+",")
-            writer.append(svømmerStatus+",\n");
+            writer.append(by+",");
+            writer.append(aktivitetsForm+",");
+            writer.append(svoemmerStatus+",\n");
 
             System.out.println("Medlem file written successfully.");
         }
