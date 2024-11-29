@@ -13,7 +13,7 @@ public class RegistrerMedlemPersistens {
             int alder = m.getAlder();
             String adresse = m.getAdresse();
             String by = m.getBy();
-            String aktivitetsForm = m.getAktivitetsForm();
+            Boolean aktivitetsForm = m.getAktivitetsForm();
             String svoemmerStatus = m.getSvoemmerStatus();
 
             writer.append(navn+",");

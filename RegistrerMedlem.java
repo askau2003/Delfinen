@@ -7,8 +7,9 @@ public abstract class RegistrerMedlem {
     protected String by;
     protected Boolean aktivitetsForm; // Passiv, Aktiv.
     protected String svoemmerStatus; // Junior, Senior, Motionist, Konkurrencesvoemmer.
+    protected int medlemsPris;
 
-    public RegistrerMedlem(int id, String navn, int alder, String adresse, String by, Boolean aktivitetsForm, String svoemmerStatus) {
+    public RegistrerMedlem(int id, String navn, int alder, String adresse, String by, Boolean aktivitetsForm, String svoemmerStatus, int medlemsPris) {
         this.id = id;
         this.navn = navn;
         this.alder = alder;
@@ -16,6 +17,7 @@ public abstract class RegistrerMedlem {
         this.by = by;
         this.aktivitetsForm = aktivitetsForm;
         this.svoemmerStatus = svoemmerStatus;
+        this.medlemsPris = medlemsPris;
     }
 
     public int getId() {
@@ -44,5 +46,9 @@ public abstract class RegistrerMedlem {
 
     public String getSvoemmerStatus() {
         return svoemmerStatus;
+    }
+
+    public int getMedlemsPris() {
+        return medlemsPris;
     }
 }
