@@ -57,4 +57,9 @@ public abstract class RegistrerMedlem {
     public int getMedlemsPris() {
         return medlemsPris;
     }
+
+    // @ Override
+    public String toString() {
+        return "ID: " + id + "\n" + "Navn: " + navn + "\n" + "Alder: " + alder + "\n" + "Adresse: " + adresse + "\n" + "By: " + by + "\n" + "Aktivitetsform: " + aktivitetsForm + "\n" + "Svømmerhold: " + svoemmerHold + "\n" + "Svømmerstatus: " + svoemmerStatus + "\n" + "Medlemspris: " + medlemsPris + " kr";
+    }
 }

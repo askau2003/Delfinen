@@ -1,10 +1,13 @@
+import java.util.ArrayList;
+
 public class SvoemmeHold extends RegistrerMedlem {
 
     public String bedsteTraeningsResultat;
     public String dato;
+    private ArrayList<RegistrerMedlem> medlemmer;
 
-    public SvoemmeHold(int id, String navn, int alder, String adresse, String by, String aktivitetsForm, String svoemmerStatus, String bedsteTraeningsResultat, String dato) {
-        super(id, navn, alder, adresse, by, aktivitetsForm, svoemmerStatus);
+    public SvoemmeHold(int id, String navn, int alder, String adresse, String by, Boolean aktivitetsForm, String svoemmerHold, String svoemmerStatus, int medlemsPris, String bedsteTraeningsResultat, String dato) {
+        super(id, navn, alder, adresse, by, aktivitetsForm,svoemmerHold, svoemmerStatus, medlemsPris);
         this.bedsteTraeningsResultat = bedsteTraeningsResultat;
         this.dato = dato;
     }
@@ -16,4 +19,28 @@ public class SvoemmeHold extends RegistrerMedlem {
     public String getDato() {
         return dato;
     }
+
+        public void addMedlem(RegistrerMedlem medlem) {
+            medlemmer.add(medlem);
+        }
+
+        public ArrayList<RegistrerMedlem> getSeniorHold() {
+            ArrayList<RegistrerMedlem> seniorHold = new ArrayList<>();
+            for (RegistrerMedlem medlem : medlemmer) {
+                if (medlem.getAlder() <= 18) {
+                    seniorHold.add(medlem);
+                }
+            }
+            return seniorHold;
+        }
+
+        public ArrayList<RegistrerMedlem> getUngdomsHold() {
+            ArrayList<RegistrerMedlem> UngdomsHold = new ArrayList<>();
+            for (RegistrerMedlem medlem : medlemmer) {
+                if (medlem.getAlder() > 18) {
+                    UngdomsHold.add(medlem);
+                }
+            }
+            return UngdomsHold;
+        }
 }
