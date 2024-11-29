@@ -1,17 +1,9 @@
-public class Kontigent {
-    // Attributter til medlem
-    private int alder; // Alder på medlem
-    private boolean aktivMedlem; // Aktive eller passive medlem
-
-    // Konstruktør
-    public Kontigent(int alder, boolean aktivMedlem) {
-        this.alder = alder;
-        this.aktivMedlem = aktivMedlem;
-    }
+public class Kontigent
+{
 
     // Metode til kontigent
     public double beregnKontigent() {
-        if (aktivMedlem) {
+        if (getSvoemmerStatus) {
             if (alder < 18) {
                 return 1000.0; // ungdomssvømmere (under 18 år) 1000 kr. årligt
             } else if (alder >= 18 && alder < 60) {
@@ -26,33 +18,19 @@ public class Kontigent {
     }
 
 
-    public int getAlder() {
-        return alder;
-    }
 
-    public void setAlder(int alder) {
-        this.alder = alder;
-    }
+// static metode
 
-    public boolean erAktiv() {
-        return aktivMedlem;
-    }
+public static double beregnForventetKontigent(int ungdom, int senior, int seniorRabat, int passivMedlem)
+{
+    double beregn = 0.0;
 
-    public void setaktivMedlem(boolean aktivMedlem) {
-        this.aktivMedlem = aktivMedlem;
-    }
+    // Beregn samlet Forventing af kontigent.
+    beregn += ungdom * 1000.0; // Ungdomssvømmer
+    beregn += senior * 1600.0; // Seniorsvømmer
+    beregn += seniorRabat * (1600.0 * 0.75); // Seniorsvømmer med rabat
+    beregn += passivMedlem * 500; // Passiv medlemmer
 
-    // static metode
-
-    public static double beregnForventetKontigent(int ungdom, int senior, int seniorRabat, int passivMedlem) {
-        double beregn = 0.0;
-
-        // Beregn samlet Forventing af kontigent.
-        beregn += ungdom * 1000.0; // Ungdomssvømmer
-        beregn += senior * 1600.0; // Seniorsvømmer
-        beregn += seniorRabat * (1600.0 * 0.75); // Seniorsvømmer med rabat
-        beregn += passivMedlem * 500; // Passiv medlemmer
-
-        return beregn;
-    }
+    return beregn;
+}
 }
