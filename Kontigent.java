@@ -1,9 +1,17 @@
-public class Kontigent
-{
+import java.util.ArrayList;
+
+public class Kontigent {
+    private RegistrerMedlem medlem;
+
+    // Constructor der tager et RegistrerMedlem
+    public Kontigent(RegistrerMedlem medlem) {
+        this.medlem = medlem;
+    }
 
     // Metode til kontigent
     public double beregnKontigent() {
-        if (getSvoemmerStatus) {
+        if (medlem.getAktivitetsForm()) {
+            int alder = medlem.getAlder();
             if (alder < 18) {
                 return 1000.0; // ungdomssvømmere (under 18 år) 1000 kr. årligt
             } else if (alder >= 18 && alder < 60) {
@@ -17,20 +25,25 @@ public class Kontigent
 
     }
 
-
-
 // static metode
 
-public static double beregnForventetKontigent(int ungdom, int senior, int seniorRabat, int passivMedlem)
-{
-    double beregn = 0.0;
+    public static double beregnForventetKontigent(ArrayList<RegistrerMedlem> medlemmer) {
+        double samletKontigent = 0.0;
+        for (RegistrerMedlem medlem : medlemmer) {
+            if (medlem.getAktivitetsForm()) {
+                int alder = medlem.getAlder();
+                if (alder < 18) {
+                    samletKontigent += 1000.0;
+                } else if (alder >= 18 && alder < 60) {
+                    samletKontigent += 1600.0;
 
-    // Beregn samlet Forventing af kontigent.
-    beregn += ungdom * 1000.0; // Ungdomssvømmer
-    beregn += senior * 1600.0; // Seniorsvømmer
-    beregn += seniorRabat * (1600.0 * 0.75); // Seniorsvømmer med rabat
-    beregn += passivMedlem * 500; // Passiv medlemmer
+                } else samletKontigent += 1600.0 * 0.75;
 
-    return beregn;
-}
-}
+                }else{
+                    samletKontigent += 500.0;
+                }
+            }
+
+            return samletKontigent;
+        }
+    }
