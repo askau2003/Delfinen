@@ -5,10 +5,10 @@ public abstract class RegistrerMedlem {
     protected int alder;
     protected String adresse;
     protected String by;
-    protected String aktivitetsForm; // Passiv, Aktiv.
+    protected Boolean aktivitetsForm; // Passiv, Aktiv.
     protected String svoemmerStatus; // Junior, Senior, Motionist, Konkurrencesvoemmer.
 
-    public RegistrerMedlem(int id, String navn, int alder, String adresse, String by, String aktivitetsForm, String svoemmerStatus) {
+    public RegistrerMedlem(int id, String navn, int alder, String adresse, String by, Boolean aktivitetsForm, String svoemmerStatus) {
         this.id = id;
         this.navn = navn;
         this.alder = alder;
@@ -38,7 +38,7 @@ public abstract class RegistrerMedlem {
         return by;
     }
 
-    public String getAktivitetsForm() {
+    public Boolean getAktivitetsForm() {
         return aktivitetsForm;
     }
 
