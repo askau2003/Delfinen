@@ -1,0 +1,3 @@
+1,Anders,25,Adressevej 10,Byen,true,Senior,Konkurrencesvoemmer,
+2,Julie,65,Adressevej 20,Byen,true,Senior,Motionist,
+3,Niels,15,Adressevej 30,Byen,false,Junior,Motionist,

@@ -26,5 +26,12 @@ public class Main {
         // Beregn samlet forventet kontingent for alle medlemmer
         double samletKontingent = Kontigent.beregnForventetKontigent(medlemmer);
         System.out.println("Samlet forventet kontingent: " + samletKontingent);
+        
+        for (RegistrerMedlem medlem : medlemmer) {
+            RegistrerMedlemPersistens.writeMedlem(medlem);
+        }
+
+        RegistrerMedlemPersistens.readMedlem();
+
     }
 }

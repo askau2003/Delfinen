@@ -5,18 +5,18 @@ public abstract class RegistrerMedlem {
     protected int alder;
     protected String adresse;
     protected String by;
-    protected Boolean aktivitetsForm; // Passiv, Aktiv.
+    protected Boolean erAktiv; // Passiv, Aktiv.
     protected String svoemmerHold; // Junior, Senior.
     protected String svoemmerStatus; // Motionist, Konkurrencesvoemmer.
     
 
-    public RegistrerMedlem(int id, String navn, int alder, String adresse, String by, Boolean aktivitetsForm, String svoemmerHold, String svoemmerStatus) {
+    public RegistrerMedlem(int id, String navn, int alder, String adresse, String by, Boolean erAktiv, String svoemmerHold, String svoemmerStatus) {
         this.id = id;
         this.navn = navn;
         this.alder = alder;
         this.adresse = adresse;
         this.by = by;
-        this.aktivitetsForm = aktivitetsForm;
+        this.erAktiv = erAktiv;
         this.svoemmerHold = svoemmerHold;
         this.svoemmerStatus = svoemmerStatus;
     }
@@ -41,8 +41,8 @@ public abstract class RegistrerMedlem {
         return by;
     }
 
-    public Boolean getAktivitetsForm() {
-        return aktivitetsForm;
+    public Boolean getErAktiv() {
+        return erAktiv;
     }
 
     public String getSvoemmerHold() {
@@ -55,6 +55,6 @@ public abstract class RegistrerMedlem {
 
     // @ Override
     public String toString() {
-        return "ID: " + id + "\n" + "Navn: " + navn + "\n" + "Alder: " + alder + "\n" + "Adresse: " + adresse + "\n" + "By: " + by + "\n" + "Aktivitetsform: " + aktivitetsForm + "\n" + "Svømmerhold: " + svoemmerHold + "\n" + "Svømmerstatus: " + svoemmerStatus;
+        return "ID: " + id + "\n" + "Navn: " + navn + "\n" + "Alder: " + alder + "\n" + "Adresse: " + adresse + "\n" + "By: " + by + "\n" + "Aktivt Medlem: " + erAktiv + "\n" + "Svømmerhold: " + svoemmerHold + "\n" + "Svømmerstatus: " + svoemmerStatus;
     }
 }

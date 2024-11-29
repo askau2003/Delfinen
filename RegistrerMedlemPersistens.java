@@ -9,18 +9,22 @@ public class RegistrerMedlemPersistens {
         String medlemFile = "medlemmer.txt";
 
         try (FileWriter writer = new FileWriter(medlemFile, true)) {
+            int id = m.getId();
             String navn = m.getNavn();
             int alder = m.getAlder();
             String adresse = m.getAdresse();
             String by = m.getBy();
-            Boolean aktivitetsForm = m.getAktivitetsForm();
+            boolean erAktiv = m.getErAktiv();
+            String svoemmeHold = m.getSvoemmerHold();
             String svoemmerStatus = m.getSvoemmerStatus();
 
+            writer.append(id+",");
             writer.append(navn+",");
             writer.append(alder+",");
             writer.append(adresse+",");
             writer.append(by+",");
-            writer.append(aktivitetsForm+",");
+            writer.append(erAktiv+",");
+            writer.append(svoemmeHold+",");
             writer.append(svoemmerStatus+",\n");
 
             System.out.println("Medlem file written successfully.");
@@ -38,7 +42,7 @@ public class RegistrerMedlemPersistens {
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(komma);
 
-                System.out.println("Navn: " + data[0] + ", Alder: " + data[1] + ", Adresse: " + data[2] + ", By: " + data[3] + ", Aktivitetsform: " + data[4] + ", Svømmer status: " + data[5]);
+                System.out.println("ID: " + data[0] + ", Navn: " + data[1] + ", Alder: " + data[2] + ", Adresse: " + data[3] + ", By: " + data[4] + ", Aktivt Medlem: " + data[5]+ ", Gruppe: " + data[6]+ ", Type: " + data[7]);
             }
         }
         catch (IOException e) {

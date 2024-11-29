@@ -10,7 +10,7 @@ public class Kontigent {
 
     // Metode til kontigent
     public double beregnKontigent() {
-        if (medlem.getAktivitetsForm()) {
+        if (medlem.getErAktiv()) {
             int alder = medlem.getAlder();
             if (alder < 18) {
                 return 1000.0; // ungdomssvømmere (under 18 år) 1000 kr. årligt
@@ -30,7 +30,7 @@ public class Kontigent {
     public static double beregnForventetKontigent(ArrayList<RegistrerMedlem> medlemmer) {
         double samletKontigent = 0.0;
         for (RegistrerMedlem medlem : medlemmer) {
-            if (medlem.getAktivitetsForm()) {
+            if (medlem.getErAktiv()) {
                 int alder = medlem.getAlder();
                 if (alder < 18) {
                     samletKontigent += 1000.0;
