@@ -1,14 +1,13 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
         // Opret konkrete medlemmer
-        SvoemmeHold medlem1 = new SvoemmeHold(1, "Anders", 25, "Adressevej 10", "Byen", true, "Senior", "Konkurrencesvoemmer", 1600, "23:11", "Dag 4");
-        SvoemmeHold medlem2 = new SvoemmeHold(2, "Julie", 65, "Adressevej 20", "Byen", true, "Senior", "Motionist", 1200, "69:19", "Dag 5");
-        SvoemmeHold medlem3 = new SvoemmeHold(3, "Niels", 15, "Adressevej 30", "Byen", false, "Junior", "Motionist", 500, "69:19", "Dag 5");
+        SvoemmeHold medlem1 = new SvoemmeHold(1, "Anders", 25, "Adressevej 10", "Byen", true, "Senior", "Konkurrencesvoemmer", "23:11", "Dag 4");
+        SvoemmeHold medlem2 = new SvoemmeHold(2, "Julie", 65, "Adressevej 20", "Byen", true, "Senior", "Motionist", "69:19", "Dag 5");
+        SvoemmeHold medlem3 = new SvoemmeHold(3, "Niels", 15, "Adressevej 30", "Byen", false, "Junior", "Motionist", "69:19", "Dag 5");
 
         // Opret en Kontigent-klasse for et enkelt medlem
         Kontigent kontigent1 = new Kontigent(medlem1);

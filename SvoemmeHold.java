@@ -6,8 +6,8 @@ public class SvoemmeHold extends RegistrerMedlem {
     public String dato;
     private ArrayList<RegistrerMedlem> medlemmer;
 
-    public SvoemmeHold(int id, String navn, int alder, String adresse, String by, Boolean aktivitetsForm, String svoemmerHold, String svoemmerStatus, int medlemsPris, String bedsteTraeningsResultat, String dato) {
-        super(id, navn, alder, adresse, by, aktivitetsForm,svoemmerHold, svoemmerStatus, medlemsPris);
+    public SvoemmeHold(int id, String navn, int alder, String adresse, String by, Boolean aktivitetsForm, String svoemmerHold, String svoemmerStatus, String bedsteTraeningsResultat, String dato) {
+        super(id, navn, alder, adresse, by, aktivitetsForm,svoemmerHold, svoemmerStatus);
         this.bedsteTraeningsResultat = bedsteTraeningsResultat;
         this.dato = dato;
     }
