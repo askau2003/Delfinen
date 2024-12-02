@@ -8,8 +8,8 @@ public class SvoemmeHold extends RegistrerMedlem {
 
     public SvoemmeHold(int id, String navn, int alder, String adresse, String by, boolean aktivitetsForm, String svoemmerStatus, boolean restance, String bedsteTraeningsResultat, String dato) {
         super(id, navn, alder, adresse, by, aktivitetsForm, svoemmerStatus, restance);
-        this.bedsteTraeningsResultat = bedsteTraeningsResultat;
-        this.dato = dato;
+        this.bedsteTraeningsResultat = bedsteTraeningsResultat; // MM:SS
+        this.dato = dato; // DD/MM/AAAA
     }
 
     public String getBedsteTraeningsResultat() {

@@ -5,9 +5,9 @@ public class Main {
     public static void main(String[] args) {
 
         // Opret konkrete medlemmer
-        SvoemmeHold medlem1 = new SvoemmeHold(1, "Anders", 25, "Adressevej 10", "Byen", true,"Konkurrencesvoemmer", false,"23:11", "Dag 4");
-        SvoemmeHold medlem2 = new SvoemmeHold(2, "Julie", 65, "Adressevej 20", "Byen", true,"Motionist", false,"69:19", "Dag 5");
-        SvoemmeHold medlem3 = new SvoemmeHold(3, "Niels", 15, "Adressevej 30", "Byen", false,"Motionist", true,"69:19", "Dag 5");
+        SvoemmeHold medlem1 = new SvoemmeHold(1, "Anders", 25, "Adressevej 10", "Byen", true,"Konkurrencesvoemmer", false,"23:11", "8/11/2024");
+        SvoemmeHold medlem2 = new SvoemmeHold(2, "Julie", 65, "Adressevej 20", "Byen", true,"Motionist", false,"69:19", "9/11/2024");
+        SvoemmeHold medlem3 = new SvoemmeHold(3, "Niels", 15, "Adressevej 30", "Byen", false,"Motionist", true,"69:19", "11/11/2024");
 
         // Opret en Kontigent-klasse for et enkelt medlem
         Kontigent kontigent = new Kontigent(medlem1);
