@@ -45,7 +45,6 @@ public abstract class RegistrerMedlem {
         return aktivitetsForm;
     }
 
-
     public String getSvoemmerStatus() {
         return svoemmerStatus;
     }
