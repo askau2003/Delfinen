@@ -15,6 +15,7 @@ public class RegistrerMedlemPersistens {
             String by = m.getBy();
             Boolean aktivitetsForm = m.getAktivitetsForm();
             String svoemmerStatus = m.getSvoemmerStatus();
+            Boolean restance = m.getRestance();
 
             writer.append(navn+",");
             writer.append(alder+",");
@@ -22,6 +23,7 @@ public class RegistrerMedlemPersistens {
             writer.append(by+",");
             writer.append(aktivitetsForm+",");
             writer.append(svoemmerStatus+",\n");
+            writer.append(restance+",\n");
 
             System.out.println("Medlem file written successfully.");
         }
@@ -38,7 +40,7 @@ public class RegistrerMedlemPersistens {
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(komma);
 
-                System.out.println("Navn: " + data[0] + ", Alder: " + data[1] + ", Adresse: " + data[2] + ", By: " + data[3] + ", Aktivitetsform: " + data[4] + ", Svømmer status: " + data[5]);
+                System.out.println("Navn: " + data[0] + ", Alder: " + data[1] + ", Adresse: " + data[2] + ", By: " + data[3] + ", Aktivitetsform: " + data[4] + ", Svømmer status: " + data[5] + ", Restance: " + data[6]);
             }
         }
         catch (IOException e) {

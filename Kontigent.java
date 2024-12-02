@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Kontigent {
     private RegistrerMedlem medlem;
+    private ArrayList<SvoemmeHold> medlemmer = new ArrayList<>();
 
     // Constructor der tager et RegistrerMedlem
     public Kontigent(RegistrerMedlem medlem) {
@@ -27,9 +28,9 @@ public class Kontigent {
 
 // static metode
 
-    public static double beregnForventetKontigent(ArrayList<RegistrerMedlem> medlemmer) {
+    public static double beregnForventetKontigent(ArrayList<SvoemmeHold> medlemmer) {
         double samletKontigent = 0.0;
-        for (RegistrerMedlem medlem : medlemmer) {
+        for (SvoemmeHold medlem : medlemmer) {
             if (medlem.getAktivitetsForm()) {
                 int alder = medlem.getAlder();
                 if (alder < 18) {
@@ -39,11 +40,34 @@ public class Kontigent {
 
                 } else samletKontigent += 1600.0 * 0.75;
 
-                }else{
-                    samletKontigent += 500.0;
-                }
+            } else {
+                samletKontigent += 500.0;
             }
-
-            return samletKontigent;
         }
+        return samletKontigent;
     }
+
+    public void addMedlem(SvoemmeHold medlem) {
+        medlemmer.add(medlem);
+    }
+
+    public ArrayList<SvoemmeHold> IRestance() {
+        ArrayList<SvoemmeHold> IRestance = new ArrayList<>();
+        for (SvoemmeHold medlem : medlemmer) {
+            if (medlem.getRestance() == true) {
+                IRestance.add(medlem);
+            }
+        }
+        return IRestance;
+    }
+
+    public ArrayList<SvoemmeHold> UdRestance() {
+        ArrayList<SvoemmeHold> UdRestance = new ArrayList<>();
+        for (SvoemmeHold medlem : medlemmer) {
+            if (medlem.getRestance() == false) {
+                UdRestance.add(medlem);
+            }
+        }
+        return UdRestance;
+    }
+}
