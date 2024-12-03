@@ -14,9 +14,9 @@ public class Main {
         kontigent.addMedlem(medlem1);
         kontigent.addMedlem(medlem2);
         kontigent.addMedlem(medlem3);
-        System.out.println("Kontingent for Anders: " + kontigent.beregnKontigent());
-        System.out.println("Kontingent for Julie: " + kontigent.beregnKontigent());
-        System.out.println("Kontingent for Niels: " + kontigent.beregnKontigent());
+        System.out.println("Kontingent for Anders: " + new Kontigent(medlem1).beregnKontigent());
+        System.out.println("Kontingent for Julie: " + new Kontigent(medlem2).beregnKontigent());
+        System.out.println("Kontingent for Niels: " + new Kontigent(medlem3).beregnKontigent());
 
         // Saml medlemmer i en liste
         ArrayList<SvoemmeHold> medlemmer = new ArrayList<>();
