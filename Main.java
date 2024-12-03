@@ -23,6 +23,10 @@ public class Main {
         medlemmer.add(medlem1);
         medlemmer.add(medlem2);
         medlemmer.add(medlem3);
+        RegistrerMedlemPersistens.writeMedlem(medlem1);
+        RegistrerMedlemPersistens.writeMedlem(medlem2);
+        RegistrerMedlemPersistens.writeMedlem(medlem3);
+
 
         // Beregn samlet forventet kontingent for alle medlemmer
         double samletKontingent = Kontigent.beregnForventetKontigent(medlemmer);
