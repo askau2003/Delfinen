@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class GUI extends JFrame implements ActionListener {
@@ -17,7 +16,7 @@ public class GUI extends JFrame implements ActionListener {
     private JTextField by = new JTextField(6);
     private JLabel promptAktiv = new JLabel("Indtast aktivitetsForm: ");
     private JTextField aktiv = new JTextField(6);
-    private JLabel promptSvoemmestatus = new JLabel("Indtast svoemestatus: ");
+    private JLabel promptSvoemmestatus = new JLabel("Indtast svoemmerstatus: ");
     private JTextField svoemmestatus = new JTextField(6);
     private JLabel promptRestance = new JLabel("Indtast restance: ");
     private JTextField restance = new JTextField(6);
@@ -27,9 +26,10 @@ public class GUI extends JFrame implements ActionListener {
     private JTextField dato = new JTextField(10);
     private JButton tilfoej = new JButton("Tilføj");
     private JButton gem = new JButton("Gem");
-
+    private JButton beregnKontingent = new JButton("Forventet Kontingent");
 
     private List list = new List(10, true);
+    private List kontigentList = new List(10, true);
     private ArrayList<SvoemmeHold> pL = new ArrayList<>();
 
     public GUI() {
@@ -58,18 +58,30 @@ public class GUI extends JFrame implements ActionListener {
         getContentPane().add(tilfoej);
         getContentPane().add(gem);
 
+
         getContentPane().add(list);
+        getContentPane().add(kontigentList);
 
         list.setFont(new Font("Courier", Font.PLAIN, 11));
-        list.setBackground(Color.yellow);
+        list.setBackground(Color.white);
         JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setPreferredSize(new Dimension(900, 120));
         add(scrollPane, BorderLayout.CENTER);
 
         tilfoej.addActionListener(this);
         gem.addActionListener(this);
-    }
+        beregnKontingent.addActionListener(this);
 
+        getContentPane().add(beregnKontingent);
+
+        kontigentList.setFont(new Font("Courier", Font.PLAIN, 11));
+        kontigentList.setBackground(Color.white);
+        JScrollPane scrollPaneTwo = new JScrollPane(kontigentList);
+        scrollPaneTwo.setPreferredSize(new Dimension(200, 120));
+        add(scrollPaneTwo, BorderLayout.SOUTH);
+
+
+    }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == tilfoej) {
@@ -144,15 +156,21 @@ public class GUI extends JFrame implements ActionListener {
         } else if (e.getSource() == gem) {
             try {
                 for (SvoemmeHold medlem : pL) {
-                    RegistrerMedlemPersistens.writeMedlem(medlem); // Kalder gem-funktionen
+                    RegistrerMedlemPersistens.writeMedlem(medlem);
                 }
                 JOptionPane.showMessageDialog(this, "Data gemt til medlemmer.txt.", "Succes", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Fejl ved gemning: " + ex.getMessage(), "Fejl", JOptionPane.ERROR_MESSAGE);
             }
+        } else if (e.getSource() == beregnKontingent) {
+            try {
+                double totalKontingent = Kontigent.beregnForventetKontigent(pL);
+                kontigentList.add("Forventet Kontingent: " + totalKontingent + " kr.");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Fejl ved beregning: " + ex.getMessage(), "Fejl", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
-
 
     public static void main(String args[]) {
         GUI f = new GUI();
