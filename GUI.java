@@ -27,14 +27,19 @@ public class GUI extends JFrame implements ActionListener {
     private JButton tilfoej = new JButton("Tilføj");
     private JButton gem = new JButton("Gem");
     private JButton beregnKontingent = new JButton("Forventet Kontingent");
+    private JButton iRestance = new JButton("Personer i Restance");
+    private JButton udRestance = new JButton("Personer ud af Restance");
+
 
     private List list = new List(10, true);
     private List kontigentList = new List(10, true);
+    private List restanceList = new List(10, true);
     private ArrayList<SvoemmeHold> pL = new ArrayList<>();
 
     public GUI() {
         setTitle("GUI");
         getContentPane().setLayout(new FlowLayout());
+
         getContentPane().add(promptId);
         getContentPane().add(id);
         getContentPane().add(promptN);
@@ -55,22 +60,26 @@ public class GUI extends JFrame implements ActionListener {
         getContentPane().add(bedsteResultat);
         getContentPane().add(promptDato);
         getContentPane().add(dato);
-        getContentPane().add(tilfoej);
-        getContentPane().add(gem);
 
+        getContentPane().add(tilfoej);
+        getContentPane().add(gem);;
 
         getContentPane().add(list);
-        getContentPane().add(kontigentList);
+        getContentPane().add(restanceList);
 
+
+        tilfoej.addActionListener(this);
+        gem.addActionListener(this);
+        beregnKontingent.addActionListener(this);
+        iRestance.addActionListener(this);
+        udRestance.addActionListener(this);
+
+        // Lister
         list.setFont(new Font("Courier", Font.PLAIN, 11));
         list.setBackground(Color.white);
         JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setPreferredSize(new Dimension(900, 120));
         add(scrollPane, BorderLayout.CENTER);
-
-        tilfoej.addActionListener(this);
-        gem.addActionListener(this);
-        beregnKontingent.addActionListener(this);
 
         getContentPane().add(beregnKontingent);
 
@@ -79,6 +88,15 @@ public class GUI extends JFrame implements ActionListener {
         JScrollPane scrollPaneTwo = new JScrollPane(kontigentList);
         scrollPaneTwo.setPreferredSize(new Dimension(200, 120));
         add(scrollPaneTwo, BorderLayout.SOUTH);
+
+        getContentPane().add(iRestance);
+        getContentPane().add(udRestance);
+
+        restanceList.setFont(new Font("Courier", Font.PLAIN, 11));
+        restanceList.setBackground(Color.white);
+        JScrollPane scrollPane3 = new JScrollPane(restanceList);
+        scrollPane3.setPreferredSize(new Dimension(300, 120));
+        add(scrollPane3, BorderLayout.EAST);
 
 
     }
@@ -135,7 +153,7 @@ public class GUI extends JFrame implements ActionListener {
                         ", Status: " + medlem.getSvoemmerStatus() + ", Restance: " + medlem.getRestance() +
                         ", Bedste Resultat: " + medlem.getBedsteTraeningsResultat() + ", Dato: " + medlem.getDato());
 
-                // Clear input fields
+
                 id.setText("");
                 navn.setText("");
                 alder.setText("");
@@ -169,8 +187,24 @@ public class GUI extends JFrame implements ActionListener {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Fejl ved beregning: " + ex.getMessage(), "Fejl", JOptionPane.ERROR_MESSAGE);
             }
+        } else if (e.getSource() == iRestance) {
+            restanceList.removeAll();  // Ryd listen før tilføjelse
+            for (SvoemmeHold medlem : pL) {
+                if (medlem.getRestance()) {
+                    restanceList.add("ID: " + medlem.getId() + ", Navn: " + medlem.getNavn() + ", Restance: " + medlem.getRestance());
+                }
+            }
+        } else if (e.getSource() == udRestance) {
+            restanceList.removeAll();  // Ryd listen før tilføjelse
+            for (SvoemmeHold medlem : pL) {
+                if (!medlem.getRestance()) {
+                    restanceList.add("ID: " + medlem.getId() + ", Navn: " + medlem.getNavn() + ", Restance: " + medlem.getRestance());
+                }
+            }
         }
     }
+
+
 
     public static void main(String args[]) {
         GUI f = new GUI();
